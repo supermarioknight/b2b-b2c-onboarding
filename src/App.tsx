@@ -1,11 +1,11 @@
 import "./App.css";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./theme.ts";
-import Signup from "./features/signup/Signup.page.tsx";
+import Signup from "./pages/signup/Signup.page.tsx";
 import { Route, Routes } from "react-router-dom";
-import CreatePassword from "./features/createPassword/CreatePassword.page.tsx";
-import PlatformHome from "./features/home/PlatformHome.page.tsx";
-import BasicInfo from "./features/basicInfo/BasicInfo.page.tsx";
+import CreatePassword from "./pages/createPassword/CreatePassword.page.tsx";
+import PlatformHome from "./pages/home/PlatformHome.page.tsx";
+import BasicInfo from "./pages/basicInfo/BasicInfo.page.tsx";
 
 function App() {
   return (
