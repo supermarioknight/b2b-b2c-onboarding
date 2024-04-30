@@ -1,0 +1,11 @@
+html, body {
+    min-height: 100%;
+}
+
+body {
+    height: 100vh;
+}
+
+.mainContainer {
+    background-color: #F3F4F6
+}

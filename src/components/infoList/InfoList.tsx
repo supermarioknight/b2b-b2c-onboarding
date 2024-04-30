@@ -31,7 +31,7 @@ const InfoList = () => {
               <ListItemIcon>
                 <StackIcon />
               </ListItemIcon>
-              <ListItemText primary="Standardizes how your technicians sell in the Home." />
+              <ListItemText primary="Standardizes how your technicians sell in the field." />
             </ListItem>
             <ListItem>
               <ListItemIcon>
@@ -50,7 +50,7 @@ const InfoList = () => {
 
         <Grid item xs={12} md={6} sx={{ paddingLeft: 7 }}>
           <Typography variant="h4" sx={{ paddingBottom: 3 }}>
-            For Home Technicians
+            For Field Technicians
           </Typography>
           <List>
             <ListItem>

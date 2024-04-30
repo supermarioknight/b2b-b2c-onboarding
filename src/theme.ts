@@ -35,6 +35,15 @@ export const theme = createTheme({
       fontWeight: 400,
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 991,
+      lg: 1280,
+      xl: 1440,
+    },
+  },
   palette: {
     primary: {
       main: "#FDE047",
@@ -84,6 +93,14 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           margin: 0,
+        },
+      },
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: "#3B82F6",
+          textDecorationColor: "#3B82F6",
         },
       },
     },
