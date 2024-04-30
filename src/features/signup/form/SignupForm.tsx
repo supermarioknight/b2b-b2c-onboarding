@@ -12,7 +12,6 @@ import { signupSchema, SignupSchema } from "./signupSchema.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ValidTextInput from "../../../components/input/ValidTextInput.tsx";
 import PasswordTextInput from "../../../components/input/PasswordTextInput.tsx";
-import TextInput from "../../../components/input/TextInput.tsx";
 
 interface SignupFormProps {
   onSignup: () => void;

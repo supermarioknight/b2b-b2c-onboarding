@@ -2,13 +2,22 @@ import "./App.css";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./theme.ts";
 import Signup from "./features/signup/Signup.page.tsx";
+import { Route, Routes } from "react-router-dom";
+import CreatePassword from "./features/createPassword/CreatePassword.page.tsx";
+import PlatformHome from "./features/home/PlatformHome.page.tsx";
+import BasicInfo from "./features/basicInfo/BasicInfo.page.tsx";
 
 function App() {
   return (
     <div className="mainContainer">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Signup />
+        <Routes>
+          <Route path="/" element={<Signup />} />
+          <Route path="/password" element={<CreatePassword />} />
+          <Route path="/home" element={<PlatformHome />} />
+          <Route path="/info" element={<BasicInfo />} />
+        </Routes>
       </ThemeProvider>
     </div>
   );
