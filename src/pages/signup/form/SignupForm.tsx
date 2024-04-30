@@ -1,17 +1,10 @@
-import {
-  Box,
-  Button,
-  Checkbox,
-  Grid,
-  Link,
-  Paper,
-  Typography,
-} from "@mui/material";
-import { Controller, useForm } from "react-hook-form";
+import { Box, Button, Grid, Link, Paper, Typography } from "@mui/material";
+import { useForm } from "react-hook-form";
 import { signupSchema, SignupSchema } from "./signupSchema.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ValidTextInput from "../../../components/input/ValidTextInput.tsx";
-import PasswordTextInput from "../../../components/input/PasswordTextInput.tsx";
+import ValidTextInput from "../../../components/common/input/ValidTextInput.tsx";
+import PasswordTextInput from "../../../components/common/input/PasswordTextInput.tsx";
+import Checkbox from "../../../components/common/checkbox/Checkbox.tsx";
 
 interface SignupFormProps {
   onSignup: () => void;
@@ -89,13 +82,14 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup }) => {
           </Grid>
           <Grid item xs={12}>
             <Box display="flex" alignItems="center">
-              <Controller
-                control={control}
-                name="agree"
-                render={({ field: { onChange, value } }) => (
-                  <Checkbox checked onChange={onChange} value={value} />
-                )}
-              />
+              {/*<Controller*/}
+              {/*  control={control}*/}
+              {/*  name="agree"*/}
+              {/*  render={({ field: { onChange, value } }) => (*/}
+              {/*    <Checkbox checked onChange={onChange} value={value} />*/}
+              {/*  )}*/}
+              {/*/>*/}
+              <Checkbox checked />
               <Typography>
                 I agree to Fieldwork’s <Link>Terms of Service</Link>
               </Typography>

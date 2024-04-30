@@ -1,7 +1,7 @@
 import { ComponentProps, useState } from "react";
 import ValidTextInput from "./ValidTextInput.tsx";
 import { IconButton, InputAdornment } from "@mui/material";
-import { EyeIcon } from "../../assets/icons/svg/Icons.tsx";
+import { EyeIcon } from "../../../assets/icons/svg/Icons.tsx";
 import { Control, FieldValues, FormState } from "react-hook-form";
 import TextInput, { TextInputProps } from "./TextInput.tsx";
 

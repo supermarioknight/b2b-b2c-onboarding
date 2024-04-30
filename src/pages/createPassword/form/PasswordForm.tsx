@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import PasswordTextInput from "../../../components/input/PasswordTextInput.tsx";
+import PasswordTextInput from "../../../components/common/input/PasswordTextInput.tsx";
 import { PasswordSchema, passwordSchema } from "./passwordSchema.ts";
 
 interface PasswordFormProps {

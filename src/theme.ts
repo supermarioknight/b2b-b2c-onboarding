@@ -104,6 +104,25 @@ export const theme = createTheme({
         },
       },
     },
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          color: "#3B82F6",
+          "&.Mui-checked": {
+            color: "#3B82F6",
+          },
+        },
+      },
+    },
+    // MuiSvgIcon: {
+    //   styleOverrides: {
+    //     root: {
+    //       // color: "black",
+    //       // color: "#3B82F6",
+    //       // textDecorationColor: "#3B82F6",
+    //     },
+    //   },
+    // },
     MuiFormHelperText: {
       styleOverrides: {
         root: {

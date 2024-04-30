@@ -1,6 +1,6 @@
 import { Container, Grid, Typography } from "@mui/material";
 import SignupForm from "./form/SignupForm.tsx";
-import InfoList from "../../components/infoList/InfoList.tsx";
+import InfoList from "../../components/sections/infoList/InfoList.tsx";
 import {
   businessOwnerListData,
   fieldTechniciansListData,
@@ -12,7 +12,7 @@ const SignUpPage = () => {
   return (
     <Container
       maxWidth="lg"
-      style={{ height: "100vh", backgroundColor: "#F3F4F6" }}
+      style={{ minHeight: "100vh", backgroundColor: "#F3F4F6" }}
     >
       <Grid
         container
