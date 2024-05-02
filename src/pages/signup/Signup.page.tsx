@@ -6,14 +6,15 @@ import {
   fieldTechniciansListData,
 } from "../../mockData/infoListData.tsx";
 import { useSignup } from "../../services/auth/useSignup.ts";
+import { RegisterOrganizationRequest } from "../../schemas/organization-schema.ts";
 
 const SignUpPage = () => {
   const { isPending, mutate } = useSignup();
-  const signup = (data) => {
+  const signup = (data: RegisterOrganizationRequest) => {
     const formattedData = {
-      organizationName: data.company,
+      organizationName: data.organizationName,
       email: data.email,
-      phone: data.phoneNumber,
+      phone: data.phone,
       firstName: data.firstName,
       lastName: data.lastName,
       password: data.password,

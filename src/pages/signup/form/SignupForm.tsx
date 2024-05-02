@@ -1,20 +1,24 @@
 import { Box, Button, Grid, Link, Paper, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { signupSchema, SignupSchema } from "./signupSchema.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ValidTextInput from "../../../components/common/input/ValidTextInput.tsx";
 import PasswordTextInput from "../../../components/common/input/PasswordTextInput.tsx";
 import Checkbox from "../../../components/common/checkbox/Checkbox.tsx";
+import {
+  RegisterOrganizationRequest,
+  RegisterOrganizationSchema,
+} from "../../../schemas/organization-schema.ts";
 
 interface SignupFormProps {
-  onSignup: (data: SignupSchema) => void;
+  onSignup: (data: RegisterOrganizationRequest) => void;
   isLoading: boolean;
 }
 
 const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
-  const { control, handleSubmit, formState } = useForm<SignupSchema>({
-    resolver: zodResolver(signupSchema),
-  });
+  const { control, handleSubmit, formState } =
+    useForm<RegisterOrganizationRequest>({
+      resolver: zodResolver(RegisterOrganizationSchema),
+    });
   return (
     <Paper sx={{ padding: 6, boxShadow: 0 }}>
       <Typography variant="h2" sx={{ paddingBottom: 3 }}>
@@ -31,7 +35,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
           <Grid item xs={12}>
             <ValidTextInput
               control={control}
-              name="company"
+              name="organizationName"
               formState={formState}
               fullWidth
               inputLabel="Company name"
@@ -72,7 +76,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
           <Grid item xs={12}>
             <ValidTextInput
               control={control}
-              name="phoneNumber"
+              name="phone"
               formState={formState}
               fullWidth
               inputLabel="Phone number"
@@ -102,6 +106,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
               color="primary"
               fullWidth
               type="submit"
+              loadi
               loading={isLoading}
             >
               Create Account
