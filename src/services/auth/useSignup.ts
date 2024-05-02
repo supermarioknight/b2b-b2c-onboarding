@@ -2,18 +2,10 @@ import http from "../apiClient/http.ts";
 import { apiEndpoints } from "../../constants/apiEndpoints.ts";
 import { useMutation } from "@tanstack/react-query";
 import token from "../apiClient/token.ts";
+import { RegisterOrganizationRequest } from "../../schemas/organization-schema.ts";
 
-export interface ISignupData {
-  organizationName: string;
-  email: string;
-  phone: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-}
-
-export const signup = (postData: ISignupData) => {
-  return http().post<ISignupData, ApiResponse>(
+export const signup = (postData: RegisterOrganizationRequest) => {
+  return http().post<RegisterOrganizationRequest, ApiResponse>(
     apiEndpoints.organizations,
     postData
   );

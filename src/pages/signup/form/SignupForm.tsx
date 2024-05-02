@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Link, Paper, Typography } from "@mui/material";
+import { Box, Grid, Link, Paper, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ValidTextInput from "../../../components/common/input/ValidTextInput.tsx";
@@ -8,6 +8,8 @@ import {
   RegisterOrganizationRequest,
   RegisterOrganizationSchema,
 } from "../../../schemas/organization-schema.ts";
+import React from "react";
+import LoadingButton from "../../../components/common/button/LoadingButton.tsx";
 
 interface SignupFormProps {
   onSignup: (data: RegisterOrganizationRequest) => void;
@@ -101,16 +103,9 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              fullWidth
-              type="submit"
-              loadi
-              loading={isLoading}
-            >
+            <LoadingButton type="submit" loading={isLoading} fullWidth>
               Create Account
-            </Button>
+            </LoadingButton>
             <Typography mt={3} textAlign="center">
               Already have an account? <Link>Sign in </Link>
             </Typography>

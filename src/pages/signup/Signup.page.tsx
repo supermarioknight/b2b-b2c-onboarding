@@ -11,15 +11,7 @@ import { RegisterOrganizationRequest } from "../../schemas/organization-schema.t
 const SignUpPage = () => {
   const { isPending, mutate } = useSignup();
   const signup = (data: RegisterOrganizationRequest) => {
-    const formattedData = {
-      organizationName: data.organizationName,
-      email: data.email,
-      phone: data.phone,
-      firstName: data.firstName,
-      lastName: data.lastName,
-      password: data.password,
-    };
-    mutate(formattedData);
+    mutate(data);
   };
 
   return (
@@ -54,7 +46,7 @@ const SignUpPage = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} md={5}>
-          <SignupForm onSignup={signup} isLoading={isPending} />
+          <SignupForm onSignup={signup} isLoading={true} />
         </Grid>
       </Grid>
     </Container>

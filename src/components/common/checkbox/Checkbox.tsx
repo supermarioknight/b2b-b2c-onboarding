@@ -4,8 +4,8 @@ import { ComponentProps } from "react";
 
 export interface CheckboxProps extends ComponentProps<typeof MUICheckbox> {}
 
-const ICheckbox: React.FC<CheckboxProps> = ({ ...props }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ ...props }) => {
   return <MUICheckbox {...props} checkedIcon={<CheckedIcon />} disableRipple />;
 };
 
-export default ICheckbox;
+export default Checkbox;

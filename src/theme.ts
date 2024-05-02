@@ -142,6 +142,7 @@ export const theme = createTheme({
           lineHeight: 2,
           minHeight: 48,
           fontSize: 16,
+          borderRadius: 8,
         },
         // containedPrimary: {
         //   backgroundColor: "#FDE047",
