@@ -1,13 +1,8 @@
-import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-} from "axios";
+import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import { getHeader, THeader } from "./header.ts";
 
 // Default API will be your root
-const API_ROOT = process.env.API_ENDPOINT || "";
+const API_ROOT = import.meta.env.VITE_API_ENDPOINT || "";
 const TIMEOUT = 20000;
 
 /**
@@ -51,28 +46,7 @@ const http = (
     return Promise.reject(data);
   }
 
-  function get(path: string, config?: AxiosRequestConfig) {
-    return client.get(path, config);
-  }
-
-  function post(path: string, payload: any, config?: AxiosRequestConfig) {
-    return client.post(path, payload, config);
-  }
-
-  function put(path: string, payload: any, config?: AxiosRequestConfig) {
-    return client.put(path, payload, config);
-  }
-
-  function patch(path: string, payload: any, config?: AxiosRequestConfig) {
-    return client.patch(path, payload, config);
-  }
-
-  function _delete(path: string, data?: any, config?: AxiosRequestConfig) {
-    if (data) {
-      return client.delete(path, { data: data }, config);
-    }
-    return client.delete(path);
-  }
+  const { get, post, put, patch, delete: _delete } = client;
 
   return {
     get,

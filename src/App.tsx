@@ -2,14 +2,18 @@ import "./App.css";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { theme } from "./theme.ts";
 import AppRoute from "./routes/AppRoute.tsx";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./services/queryClient/queryClient.ts";
 
 function App() {
   return (
     <div className="mainContainer">
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <AppRoute />
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <AppRoute />
+        </ThemeProvider>
+      </QueryClientProvider>
     </div>
   );
 }

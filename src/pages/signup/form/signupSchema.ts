@@ -29,10 +29,10 @@ export const signupSchema = z.object({
       required_error: "Password is required",
     })
     .min(8, { message: "Password must be at least 8 characters long" }),
-  agree: z.boolean().refine((value) => value === true, {
-    message: "You must agree to the terms and conditions",
-    path: ["agree"],
-  }),
+  // agree: z.boolean().refine((value) => value === true, {
+  //   message: "You must agree to the terms and conditions",
+  //   path: ["agree"],
+  // }),
 });
 
 export type SignupSchema = z.infer<typeof signupSchema>;

@@ -5,9 +5,21 @@ import {
   businessOwnerListData,
   fieldTechniciansListData,
 } from "../../mockData/infoListData.tsx";
+import { useSignup } from "../../services/auth/useSignup.ts";
 
 const SignUpPage = () => {
-  const signup = () => {};
+  const { isPending, mutate } = useSignup();
+  const signup = (data) => {
+    const formattedData = {
+      organizationName: data.company,
+      email: data.email,
+      phone: data.phoneNumber,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      password: data.password,
+    };
+    mutate(formattedData);
+  };
 
   return (
     <Container
@@ -41,7 +53,7 @@ const SignUpPage = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} md={5}>
-          <SignupForm onSignup={signup} />
+          <SignupForm onSignup={signup} isLoading={isPending} />
         </Grid>
       </Grid>
     </Container>

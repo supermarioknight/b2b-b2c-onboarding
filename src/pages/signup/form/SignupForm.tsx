@@ -7,10 +7,11 @@ import PasswordTextInput from "../../../components/common/input/PasswordTextInpu
 import Checkbox from "../../../components/common/checkbox/Checkbox.tsx";
 
 interface SignupFormProps {
-  onSignup: () => void;
+  onSignup: (data: SignupSchema) => void;
+  isLoading: boolean;
 }
 
-const SignupForm: React.FC<SignupFormProps> = ({ onSignup }) => {
+const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
   const { control, handleSubmit, formState } = useForm<SignupSchema>({
     resolver: zodResolver(signupSchema),
   });
@@ -96,8 +97,14 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup }) => {
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <Button variant="contained" color="primary" fullWidth type="submit">
-              Save password
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              type="submit"
+              loading={isLoading}
+            >
+              Create Account
             </Button>
             <Typography mt={3} textAlign="center">
               Already have an account? <Link>Sign in </Link>
