@@ -1,8 +1,9 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import { getHeader, THeader } from "./header.ts";
+import { axiosRequestInterceptor } from "../amplify/interceptAxiosRequest.ts";
 
 // Default API will be your root
-const API_ROOT = import.meta.env.VITE_API_ENDPOINT || "";
+const API_ROOT = import.meta.env.API_BASE_URL;
 const TIMEOUT = 20000;
 
 /**
@@ -25,6 +26,9 @@ const http = (
     timeout,
     headers,
   });
+
+  // Intercept request to refresh idToken of amplify-auth user
+  client.interceptors.request.use(axiosRequestInterceptor);
 
   // Intercept response object and handleSuccess and Error Object
   client.interceptors.response.use(handleSuccess, handleError);
@@ -49,6 +53,7 @@ const http = (
   const { get, post, put, patch, delete: _delete } = client;
 
   return {
+    client,
     get,
     post,
     put,

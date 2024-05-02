@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, Grid, Typography } from "@mui/material";
 import SignupForm from "./form/SignupForm.tsx";
 import InfoList from "../../components/sections/infoList/InfoList.tsx";
@@ -9,10 +11,15 @@ import { useSignup } from "../../services/auth/useSignup.ts";
 import { RegisterOrganizationRequest } from "../../schemas/organization-schema.ts";
 
 const SignUpPage = () => {
-  const { isPending, mutate } = useSignup();
+  const navigate = useNavigate();
+  const { isPending, isSuccess, mutate } = useSignup();
   const signup = (data: RegisterOrganizationRequest) => {
     mutate(data);
   };
+
+  useEffect(() => {
+    navigate('/');
+  }, [isSuccess]);
 
   return (
     <Container

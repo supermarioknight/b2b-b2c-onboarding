@@ -1,7 +1,6 @@
 import http from "../apiClient/http.ts";
 import { apiEndpoints } from "../../constants/apiEndpoints.ts";
 import { useMutation } from "@tanstack/react-query";
-import token from "../apiClient/token.ts";
 import { RegisterOrganizationRequest } from "../../schemas/organization-schema.ts";
 
 export const signup = (postData: RegisterOrganizationRequest) => {
@@ -14,8 +13,8 @@ export const signup = (postData: RegisterOrganizationRequest) => {
 export function useSignup() {
   return useMutation({
     mutationFn: signup,
-    onSuccess: (response) => {
-      token.setToken({ accessToken: response.userId });
+    onSuccess: (_response) => {
+      console.log("Organization has successfully been registered.");
     },
   });
 }
