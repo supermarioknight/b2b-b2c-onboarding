@@ -18,7 +18,9 @@ const SignUpPage = () => {
   };
 
   useEffect(() => {
-    navigate('/');
+    if (isSuccess) {
+      navigate('/signin');
+    }
   }, [isSuccess]);
 
   return (

@@ -1,14 +1,14 @@
-import { Navigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../context/auth.context";
+import AppLoader from "../components/common/loader/AppLoader";
 
-interface ProtectedRouteProps {
-  children: React.ReactNode;
-}
+const ProtectedRoute: React.FC = () => {
+  const { user, isLoading } = useAuth();
 
-export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const user = "";
-  if (!user) {
-    return <Navigate to="/signup" replace />;
-  }
+  if (isLoading) return <AppLoader />;
 
-  return children;
+  return user ? <Outlet /> : <Navigate to="/signin" replace />;
 };
+
+export default ProtectedRoute;
