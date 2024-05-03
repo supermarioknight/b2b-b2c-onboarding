@@ -1,9 +1,10 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import { getHeader, THeader } from "./header.ts";
 import { axiosRequestInterceptor } from "../amplify/interceptAxiosRequest.ts";
+import { config } from "../../config.ts";
 
 // Default API will be your root
-const API_ROOT = import.meta.env.API_BASE_URL;
+const API_ROOT = config.apiBaseUrl;
 const TIMEOUT = 20000;
 
 /**
