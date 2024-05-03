@@ -139,15 +139,6 @@ export const theme = createTheme({
         },
       },
     },
-    // MuiSvgIcon: {
-    //   styleOverrides: {
-    //     root: {
-    //       // color: "black",
-    //       // color: "#3B82F6",
-    //       // textDecorationColor: "#3B82F6",
-    //     },
-    //   },
-    // },
     MuiFormHelperText: {
       styleOverrides: {
         root: {
@@ -178,10 +169,14 @@ export const theme = createTheme({
             backgroundColor: "#F3F4F6",
             color: "#1F2937",
           },
+          "&.MuiButton-containedSecondary": {
+            backgroundColor: "#374151",
+            // color: "#1F2937",
+          },
         },
-        // containedPrimary: {
-        //   backgroundColor: "#FDE047",
-        // },
+        colorSecondary: {
+          backgroundColor: "#374151",
+        },
         // colorInherit: {
         //   color: "#6E7581",
         //   borderColor: "#E9EFFA",

@@ -2,6 +2,7 @@ import TextInput, { TextInputProps } from "./TextInput.tsx";
 import {
   Control,
   Controller,
+  FieldErrors,
   FieldValues,
   FormState,
   Path,
@@ -22,6 +23,11 @@ const ValidTextInput = <T extends FieldValues>({
   name,
   ...textInputProps
 }: ValidInputProps<T> & TextInputProps) => {
+  const isNestedObject = name.includes(".");
+  const error = isNestedObject
+    ? getNestedValue(formState?.errors, name)
+    : formState.errors[name];
+
   return (
     <Controller
       control={control}
@@ -32,8 +38,9 @@ const ValidTextInput = <T extends FieldValues>({
           onBlur={onBlur}
           onChange={onChange}
           value={value}
-          error={!!formState.errors[name]}
-          helperText={formState.errors[name]?.message as string}
+          // error={!!formState.errors[name]}
+          error={!!error}
+          helperText={error?.message as string}
         />
       )}
     />
@@ -41,3 +48,17 @@ const ValidTextInput = <T extends FieldValues>({
 };
 
 export default ValidTextInput;
+
+function getNestedValue(obj: FieldErrors<FieldValues>, path: string) {
+  const keys = path.split(".");
+  let result = obj;
+
+  for (const key of keys) {
+    if (result && typeof result === "object" && key in result) {
+      result = result[key];
+    } else {
+      return undefined;
+    }
+  }
+  return result;
+}

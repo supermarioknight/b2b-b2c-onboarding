@@ -50,6 +50,20 @@ export enum OrganizationStatus {
 //   }),
 // });
 
+export const BaseOrganizationSchema = z.object({
+  organizationId: z.string().uuid(),
+  organizationName: z.string().min(1),
+  organizationPhone: z.string(),
+  organizationAddress: z.object({
+    street: z.string().min(1),
+    city: z.string().min(1),
+    state: z.string(),
+    zip: z.string(),
+  }),
+  numberOfEmployees: z.string(),
+  enterpriseId: z.string().optional(),
+});
+
 export const RegisterOrganizationSchema = z.object({
   // organizationName: BaseOrganizationSchema.shape.organizationName,
   // email: UserProfileSchema.shape.email,
@@ -100,6 +114,7 @@ export type RegisterOrganizationRequest = z.infer<
 >;
 
 export type SignInRequest = z.infer<typeof SignInSchema>;
+export type OrganizationDetailsRequest = z.infer<typeof BaseOrganizationSchema>;
 // export type UpdateOrganizationRequest = z.infer<
 //   typeof UpdateOrganizationSchema
 // >;

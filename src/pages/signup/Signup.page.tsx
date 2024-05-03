@@ -20,12 +20,6 @@ const SignUpPage = () => {
       .catch(console.error);
   };
 
-  // useEffect(() => {
-  //   if (isSuccess) {
-  //     navigate("/signin");
-  //   }
-  // }, [isSuccess]);
-
   return (
     <Container
       maxWidth="lg"

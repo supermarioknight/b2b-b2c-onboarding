@@ -8,8 +8,14 @@ import {
   Typography,
 } from "@mui/material";
 import Button from "../../components/common/button/Button.tsx";
+import { useNavigate } from "react-router-dom";
 
 const AccountSetup = () => {
+  const navigate = useNavigate();
+  const beginSetup = () => {
+    navigate("/onboarding/company-details");
+  };
+
   return (
     <Box
       sx={{
@@ -77,7 +83,7 @@ const AccountSetup = () => {
                 </StyledListItem>
               </List>
             </Box>
-            <Button variant="contained" fullWidth>
+            <Button variant="contained" fullWidth onClick={beginSetup}>
               Begin Setup
             </Button>
           </Box>
