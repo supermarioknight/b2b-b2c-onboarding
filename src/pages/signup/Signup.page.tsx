@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Grid, Typography } from "@mui/material";
 import SignupForm from "./form/SignupForm.tsx";
@@ -12,21 +11,30 @@ import { RegisterOrganizationRequest } from "../../schemas/organization-schema.t
 
 const SignUpPage = () => {
   const navigate = useNavigate();
-  const { isPending, isSuccess, mutate } = useSignup();
+  const { isPending, mutateAsync } = useSignup();
   const signup = (data: RegisterOrganizationRequest) => {
-    mutate(data);
+    mutateAsync(data)
+      .then(() => {
+        navigate("/signin");
+      })
+      .catch(console.error);
   };
 
-  useEffect(() => {
-    if (isSuccess) {
-      navigate('/signin');
-    }
-  }, [isSuccess]);
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     navigate("/signin");
+  //   }
+  // }, [isSuccess]);
 
   return (
     <Container
       maxWidth="lg"
-      style={{ minHeight: "100vh", backgroundColor: "#F3F4F6" }}
+      style={{
+        minHeight: "100vh",
+        backgroundColor: "#F3F4F6",
+        display: "flex",
+        alignItems: "center",
+      }}
     >
       <Grid
         container

@@ -1,8 +1,8 @@
 import { toast as reactToastify, ToastOptions } from "react-toastify";
-import { AlertProps, Typography } from "@mui/material";
+import { AlertProps, Typography, Alert as MuiAlert } from "@mui/material";
 
 function Alert(props: AlertProps) {
-  return <Alert elevation={6} variant="filled" {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const toast = {
@@ -18,7 +18,7 @@ const toast = {
     );
   },
   error: (message: string, options?: ToastOptions) => {
-    reactToastify.error(
+    reactToastify(
       () => (
         <Alert severity="error" variant="filled">
           <Typography>Error</Typography>

@@ -15,7 +15,7 @@ export const queryClient = new QueryClient({
     mutations: {
       onSettled: (data: any, error: any) => {
         if (error?.message) {
-          Toast.error(error.message);
+          Toast.error(error?.message || "Something went wrong!");
         }
       },
     },

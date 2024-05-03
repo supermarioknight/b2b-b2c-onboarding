@@ -71,6 +71,18 @@ export const RegisterOrganizationSchema = z.object({
     ),
 });
 
+export const SignInSchema = z.object({
+  email: UserProfileSchema.shape.email,
+  password: z
+    .string()
+    .min(8, "Password must be at least 8 characters long")
+    .max(128, "Password must not exceed 128 characters")
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};'"])[A-Za-z\d!@#$%^&*()_+\-=[\]{};'"]{8,128}$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+    ),
+});
+
 // export const UpdateOrganizationSchema = BaseOrganizationSchema.omit({
 //   organizationId: true,
 //   enterpriseId: true,
@@ -86,6 +98,8 @@ export const RegisterOrganizationSchema = z.object({
 export type RegisterOrganizationRequest = z.infer<
   typeof RegisterOrganizationSchema
 >;
+
+export type SignInRequest = z.infer<typeof SignInSchema>;
 // export type UpdateOrganizationRequest = z.infer<
 //   typeof UpdateOrganizationSchema
 // >;

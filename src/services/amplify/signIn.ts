@@ -15,7 +15,6 @@ export async function signIn(
       .getJwtToken()}`;
     return user;
   } catch (error) {
-    console.error("Failed Cognito authentication:", error);
-    return null;
+    throw error;
   }
 }

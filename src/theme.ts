@@ -130,12 +130,17 @@ export const theme = createTheme({
         },
       },
     },
+    MuiAlert: {
+      styleOverrides: {
+        colorError: "#ff8080",
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
           padding: "0.875",
-          paddingLeft: 3,
-          paddingRight: 3,
+          paddingLeft: 24,
+          paddingRight: 24,
           fontWeight: 500,
           textTransform: "initial",
           letterSpacing: "0.02em",
