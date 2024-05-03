@@ -139,6 +139,16 @@ export const theme = createTheme({
         },
       },
     },
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          color: "#374151",
+          "&.Mui-checked": {
+            color: "#374151",
+          },
+        },
+      },
+    },
     MuiFormHelperText: {
       styleOverrides: {
         root: {

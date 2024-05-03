@@ -7,27 +7,14 @@ import {
 import { SignInRequest } from "../../schemas/organization-schema.ts";
 import SigninForm from "./form/SigninForm.tsx";
 import { useSignIn } from "../../services/auth/useSignIn.ts";
-import { useGetOrganizationDetails } from "../../services/organization/useGetOrganizationDetails.ts";
-import { useState } from "react";
 
 const SignInPage = () => {
   const { isPending, mutateAsync } = useSignIn();
-  const [orgId, setOrgId] = useState(null);
-  const { isLoading, data } = useGetOrganizationDetails(orgId, {
-    enabled: !!orgId,
-  });
 
   const signIn = (data: SignInRequest) => {
+    console.log(data);
     mutateAsync(data)
-      .then((response) => {
-        const orgId =
-          response?.UserAttributes?.find(
-            (attr) => attr?.Name === "custom:organizationId"
-          )?.value ?? null;
-        if (orgId) {
-          setOrgId(orgId);
-        }
-      })
+      .then(() => {})
       .catch(console.error);
   };
 
@@ -68,7 +55,7 @@ const SignInPage = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} md={5}>
-          <SigninForm onSignIn={signIn} isLoading={isPending || isLoading} />
+          <SigninForm onSignIn={signIn} isLoading={isPending} />
         </Grid>
       </Grid>
     </Container>

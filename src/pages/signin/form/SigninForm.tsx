@@ -1,5 +1,12 @@
-import { Grid, Link, Paper, Typography } from "@mui/material";
-import { useForm } from "react-hook-form";
+import {
+  Box,
+  FormControlLabel,
+  Grid,
+  Link,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ValidTextInput from "../../../components/common/input/ValidTextInput.tsx";
 import {
@@ -9,6 +16,9 @@ import {
 import React from "react";
 import LoadingButton from "../../../components/common/button/LoadingButton.tsx";
 import PasswordTextInput from "../../../components/common/input/PasswordTextInput.tsx";
+import RadioGrp, {
+  RadioFormControl,
+} from "../../../components/common/radio/Radio.tsx";
 
 interface SignupFormProps {
   onSignIn: (data: SignInRequest) => void;
@@ -16,9 +26,17 @@ interface SignupFormProps {
 }
 
 const SignInForm: React.FC<SignupFormProps> = ({ onSignIn, isLoading }) => {
-  const { control, handleSubmit, formState } = useForm<SignInRequest>({
-    resolver: zodResolver(SignInSchema),
-  });
+  const { control, handleSubmit, formState, register } = useForm<SignInRequest>(
+    {
+      resolver: zodResolver(SignInSchema),
+      defaultValues: {
+        signInFor: "organization",
+      },
+    }
+  );
+
+  console.log(formState.defaultValues, formState.errors, "formState");
+
   return (
     <Paper sx={{ padding: 6, boxShadow: 0 }}>
       <Typography variant="h2" sx={{ paddingBottom: 3 }}>
@@ -45,7 +63,23 @@ const SignInForm: React.FC<SignupFormProps> = ({ onSignIn, isLoading }) => {
           <Grid item xs={12}>
             <PasswordTextInput formState={formState} control={control} />
           </Grid>
-
+          <Grid item xs={12}>
+            <Controller
+              control={control}
+              name="signInFor"
+              render={({ field }) => (
+                <RadioGrp
+                  {...field}
+                  row
+                  title="Signin For"
+                  aria-labelledby="sigin-options"
+                >
+                  <RadioFormControl label="Organization" value="organization" />
+                  <RadioFormControl value="user" label="User" />
+                </RadioGrp>
+              )}
+            />
+          </Grid>
           <Grid item xs={12}>
             <LoadingButton type="submit" loading={isLoading} fullWidth>
               Login

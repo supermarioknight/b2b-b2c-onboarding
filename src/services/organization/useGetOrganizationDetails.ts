@@ -19,14 +19,3 @@ export function useGetOrganizationDetails(
     ...options,
   });
 }
-
-// export function useFetchVendors(
-//     cmp: number,
-//     options?: Omit<UseQueryOptions, 'queryKey' | 'queryFn'>,
-// ) {
-//   return useQuery({
-//     queryKey: ['fetchPurchaseOrder', cmp],
-//     queryFn: () => fetchVendors(cmp),
-//     ...options,
-//   });
-// }

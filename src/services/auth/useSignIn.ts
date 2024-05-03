@@ -4,20 +4,19 @@ import { useMutation } from "@tanstack/react-query";
 import { SignInRequest } from "../../schemas/organization-schema.ts";
 
 export const login = (postData: SignInRequest) => {
-  const { email, password } = postData;
-  return signIn(email, password);
+  const { email, password, signInFor } = postData;
+  return signIn(email, password).then((_response) => {
+    if (_response?.attributes?.["custom:organizationId"]) {
+      console.log(_response?.attributes?.["custom:organizationId"], 55555555);
+      // make api call to org
+      // TODO: check getOrganizationDetails in useGetOrganizationDetails.ts file, maybe it can be used
+    }
+  });
 };
 
 export function useSignIn() {
   return useMutation({
     mutationFn: login,
-    onSuccess: (_response) => {
-      // console.log("Organization has successfully been registered.");
-    },
+    onSuccess: (_response) => {},
   });
-}
-
-interface UserAttribute {
-  Name: string;
-  Value: string;
 }

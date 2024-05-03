@@ -95,6 +95,7 @@ export const SignInSchema = z.object({
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};'"])[A-Za-z\d!@#$%^&*()_+\-=[\]{};'"]{8,128}$/,
       "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
     ),
+  signInFor: z.enum(["organization", "user"]),
 });
 
 // export const UpdateOrganizationSchema = BaseOrganizationSchema.omit({
