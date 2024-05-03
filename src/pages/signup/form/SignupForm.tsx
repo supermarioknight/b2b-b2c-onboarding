@@ -14,9 +14,14 @@ import LoadingButton from "../../../components/common/button/LoadingButton.tsx";
 interface SignupFormProps {
   onSignup: (data: RegisterOrganizationRequest) => void;
   isLoading: boolean;
+  error?: Array<{ field: string; message: string }>;
 }
 
-const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
+const SignupForm: React.FC<SignupFormProps> = ({
+  onSignup,
+  isLoading,
+  error,
+}) => {
   const { control, handleSubmit, formState } =
     useForm<RegisterOrganizationRequest>({
       resolver: zodResolver(RegisterOrganizationSchema),
@@ -42,6 +47,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
               fullWidth
               inputLabel="Company name"
               variant="outlined"
+              apiError={error}
             />
           </Grid>
 
@@ -53,6 +59,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
                 formState={formState}
                 fullWidth
                 inputLabel="First name"
+                apiError={error}
               />
             </Grid>
             <Grid item xs={6}>
@@ -62,6 +69,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
                 formState={formState}
                 fullWidth
                 inputLabel="Last name"
+                apiError={error}
               />
             </Grid>
           </Grid>
@@ -73,6 +81,7 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
               fullWidth
               inputLabel="Email address"
               type="email"
+              apiError={error}
             />
           </Grid>
           <Grid item xs={12}>
@@ -85,7 +94,11 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSignup, isLoading }) => {
             />
           </Grid>
           <Grid item xs={12}>
-            <PasswordTextInput formState={formState} control={control} />
+            <PasswordTextInput
+              formState={formState}
+              control={control}
+              apiError={error}
+            />
           </Grid>
           <Grid item xs={12}>
             <Box display="flex" alignItems="center">

@@ -11,7 +11,7 @@ import { RegisterOrganizationRequest } from "../../schemas/organization-schema.t
 
 const SignUpPage = () => {
   const navigate = useNavigate();
-  const { isPending, mutateAsync } = useSignup();
+  const { isPending, mutateAsync, error } = useSignup();
   const signup = (data: RegisterOrganizationRequest) => {
     mutateAsync(data)
       .then(() => {
@@ -57,7 +57,11 @@ const SignUpPage = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} md={5}>
-          <SignupForm onSignup={signup} isLoading={isPending} />
+          <SignupForm
+            onSignup={signup}
+            isLoading={isPending}
+            error={error?.errors}
+          />
         </Grid>
       </Grid>
     </Container>

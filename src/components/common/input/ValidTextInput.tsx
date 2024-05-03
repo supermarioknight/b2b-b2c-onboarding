@@ -15,18 +15,21 @@ export interface ValidInputProps<T extends FieldValues>
   control: Control<T>;
   name: Path<T>;
   formState: FormState<FieldValues>;
+  apiError?: Array<{ field: Path<T>; message: string }>;
 }
 
 const ValidTextInput = <T extends FieldValues>({
   control,
   formState,
   name,
+  apiError,
   ...textInputProps
 }: ValidInputProps<T> & TextInputProps) => {
   const isNestedObject = name.includes(".");
-  const error = isNestedObject
-    ? getNestedValue(formState?.errors, name)
-    : formState.errors[name];
+  const error =
+    (isNestedObject
+      ? getNestedValue(formState?.errors, name)
+      : formState.errors[name]) || apiError?.find((i) => i?.field === name);
 
   return (
     <Controller
@@ -41,6 +44,7 @@ const ValidTextInput = <T extends FieldValues>({
           // error={!!formState.errors[name]}
           error={!!error}
           helperText={error?.message as string}
+          // helperText={formState.errors[name]?.message as string}
         />
       )}
     />
