@@ -17,8 +17,7 @@ export function useSignIn() {
   });
 }
 
-interface ApiResponse {
-  message: string;
-  organizationId: string;
-  userId: string;
+interface UserAttribute {
+  Name: string;
+  Value: string;
 }
