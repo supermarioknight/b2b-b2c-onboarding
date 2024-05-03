@@ -5,6 +5,9 @@ import ProtectedRoute from "./ProtectedRoute.tsx";
 import PublicRoute from "./PublicRoute.tsx";
 import OrganizationHome from "../pages/home/OrganizationHome.page.tsx";
 import OrganizationOnboarding from "../pages/onboarding/OrganizationOnboarding.page.tsx";
+import CompanyDetails from "../pages/onboarding/CompanyDetails.page.tsx";
+import InviteTeam from "../pages/onboarding/InviteTeam.page.tsx";
+import PersonalDetails from "../pages/onboarding/PersonalDetails.page.tsx";
 
 const AppRoute = () => {
   return (
@@ -12,6 +15,15 @@ const AppRoute = () => {
       <Routes>
         <Route element={<ProtectedRoute />}>
           <Route path="/onboarding" element={<OrganizationOnboarding />} />
+          <Route
+            path="/onboarding/company-details"
+            element={<CompanyDetails />}
+          />
+          <Route
+            path="/onboarding/personal-details"
+            element={<PersonalDetails />}
+          />
+          <Route path="/onboarding/invite-team" element={<InviteTeam />} />
           <Route path="/" element={<OrganizationHome />} />
         </Route>
         <Route element={<PublicRoute />}>

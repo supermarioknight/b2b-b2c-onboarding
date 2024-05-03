@@ -31,8 +31,6 @@ const SignInPage = () => {
       .catch(console.error);
   };
 
-  console.log(data, 55555555);
-
   return (
     <Container
       maxWidth="lg"

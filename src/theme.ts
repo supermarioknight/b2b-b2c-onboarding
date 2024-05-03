@@ -1,4 +1,17 @@
 import { createTheme } from "@mui/material";
+import { TypographyOptions } from "@mui/material/styles/createTypography";
+
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    bodyLg: true;
+    titleLg: true;
+  }
+}
+
+interface ExtendedTypographyOptions extends TypographyOptions {
+  bodyLg: React.CSSProperties;
+  titleLg: React.CSSProperties;
+}
 
 export const theme = createTheme({
   typography: {
@@ -34,7 +47,19 @@ export const theme = createTheme({
       lineHeight: "1.2425",
       fontWeight: 400,
     },
-  },
+    bodyLg: {
+      fontSize: "1.125rem",
+      fontWeight: 400,
+      lineHeight: "1.744rem",
+      fontcolor: "#374151",
+    },
+    titleLg: {
+      fontSize: "1.125rem",
+      lineHeight: "1.868rem",
+      fontWeight: 500,
+      color: "#1F2937",
+    },
+  } as ExtendedTypographyOptions,
   breakpoints: {
     values: {
       xs: 0,
@@ -148,6 +173,11 @@ export const theme = createTheme({
           minHeight: 48,
           fontSize: 16,
           borderRadius: 8,
+          boxShadow: "none",
+          "&.MuiButton-containedInfo": {
+            backgroundColor: "#F3F4F6",
+            color: "#1F2937",
+          },
         },
         // containedPrimary: {
         //   backgroundColor: "#FDE047",
