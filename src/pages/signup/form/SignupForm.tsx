@@ -1,15 +1,17 @@
-import { Box, Grid, Link, Paper, Typography } from "@mui/material";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ValidTextInput from "../../../components/common/input/ValidTextInput.tsx";
 import PasswordTextInput from "../../../components/common/input/PasswordTextInput.tsx";
 import Checkbox from "../../../components/common/checkbox/Checkbox.tsx";
+import { Link } from "react-router-dom";
 import {
   RegisterOrganizationRequest,
   RegisterOrganizationSchema,
 } from "../../../schemas/organization-schema.ts";
 import React from "react";
 import LoadingButton from "../../../components/common/button/LoadingButton.tsx";
+import { routes } from "../../../constants/routes.ts";
 
 interface SignupFormProps {
   onSignup: (data: RegisterOrganizationRequest) => void;
@@ -27,7 +29,13 @@ const SignupForm: React.FC<SignupFormProps> = ({
       resolver: zodResolver(RegisterOrganizationSchema),
     });
   return (
-    <Paper sx={{ padding: 6, boxShadow: 0 }}>
+    <Paper
+      sx={{
+        padding: 6,
+        boxShadow:
+          "0px 2px 8px -2px rgba(21, 21, 21, 0.08), 0px 12px 16px -4px rgba(21, 21, 21, 0.08)",
+      }}
+    >
       <Typography variant="h2" sx={{ paddingBottom: 3 }}>
         Join Fieldwork
       </Typography>
@@ -120,7 +128,7 @@ const SignupForm: React.FC<SignupFormProps> = ({
               Create Account
             </LoadingButton>
             <Typography mt={3} textAlign="center">
-              Already have an account? <Link>Sign in </Link>
+              Already have an account? <Link to={routes.signIn}>Sign in </Link>
             </Typography>
           </Grid>
         </Grid>

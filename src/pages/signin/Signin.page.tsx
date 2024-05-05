@@ -26,6 +26,7 @@ const SignInPage = () => {
         backgroundColor: "#F3F4F6",
         display: "flex",
         alignItems: "center",
+        padding: 32,
       }}
     >
       <Grid

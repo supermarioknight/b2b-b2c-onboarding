@@ -19,6 +19,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ValidTextInput from "../../components/common/input/ValidTextInput.tsx";
 import LoadingButton from "../../components/common/button/LoadingButton.tsx";
 import { theme } from "../../theme.ts";
+import Logo from "../../components/common/logo/Logo.tsx";
 
 const CompanyDetails = () => {
   const { control, handleSubmit, formState } =
@@ -41,7 +42,7 @@ const CompanyDetails = () => {
     >
       {/*Logo*/}
       <Box pb={6} pl={3}>
-        <Typography variant="h3">Fieldwork</Typography>
+        <Logo />
       </Box>
       {/*White Box*/}
       <Box
@@ -203,12 +204,7 @@ const CompanyDetails = () => {
           </Box>
         </Box>
 
-        <Box
-        // sx={{
-        //   display: "flex",
-        //   justifyContent: "center",
-        // }}
-        >
+        <Box>
           <Button variant="contained" color="info">
             Save & Exit setup
           </Button>

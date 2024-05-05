@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import SignupForm from "./form/SignupForm.tsx";
 import InfoList from "../../components/sections/infoList/InfoList.tsx";
 import {
@@ -8,6 +8,7 @@ import {
 } from "../../mockData/infoListData.tsx";
 import { useSignup } from "../../services/auth/useSignup.ts";
 import { RegisterOrganizationRequest } from "../../schemas/organization-schema.ts";
+import { routes } from "../../constants/routes.ts";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -15,27 +16,21 @@ const SignUpPage = () => {
   const signup = (data: RegisterOrganizationRequest) => {
     mutateAsync(data)
       .then(() => {
-        navigate("/signin");
+        navigate(routes.signIn);
       })
       .catch(console.error);
   };
 
   return (
     <Container
-      maxWidth="lg"
       style={{
         minHeight: "100vh",
-        backgroundColor: "#F3F4F6",
         display: "flex",
         alignItems: "center",
+        padding: 32,
       }}
     >
-      <Grid
-        container
-        style={{ height: "100%" }}
-        alignItems="center"
-        spacing={3}
-      >
+      <Grid container alignItems="center" spacing={3}>
         <Grid item xs={12} md={7} padding={6}>
           <Typography variant="h2" sx={{ paddingBottom: 4 }}>
             Fieldwork is the leading sales tool for your HVAC business.

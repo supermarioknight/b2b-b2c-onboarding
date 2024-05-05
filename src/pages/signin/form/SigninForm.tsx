@@ -1,8 +1,6 @@
 import {
-  Box,
-  FormControlLabel,
   Grid,
-  Link,
+  // Link,
   Paper,
   Typography,
 } from "@mui/material";
@@ -13,12 +11,14 @@ import {
   SignInRequest,
   SignInSchema,
 } from "../../../schemas/organization-schema.ts";
+import { Link } from "react-router-dom";
 import React from "react";
 import LoadingButton from "../../../components/common/button/LoadingButton.tsx";
 import PasswordTextInput from "../../../components/common/input/PasswordTextInput.tsx";
 import RadioGrp, {
   RadioFormControl,
 } from "../../../components/common/radio/Radio.tsx";
+import { routes } from "../../../constants/routes.ts";
 
 interface SignupFormProps {
   onSignIn: (data: SignInRequest) => void;
@@ -85,7 +85,7 @@ const SignInForm: React.FC<SignupFormProps> = ({ onSignIn, isLoading }) => {
               Login
             </LoadingButton>
             <Typography mt={3} textAlign="center">
-              Don't have an account? <Link>Sign up </Link>
+              Don't have an account? <Link to={routes.signUp}>Sign up </Link>
             </Typography>
           </Grid>
         </Grid>

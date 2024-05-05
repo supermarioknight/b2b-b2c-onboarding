@@ -58,7 +58,7 @@ const PasswordForm: React.FC<PasswordFormProps> = ({ onCreatePassword }) => {
           </Grid>
           <Grid item xs={12}>
             <Button variant="contained" color="primary" fullWidth type="submit">
-              Create Account
+              Save password
             </Button>
             <Typography mt={3} textAlign="center">
               Already have an account? <Link>Sign in </Link>

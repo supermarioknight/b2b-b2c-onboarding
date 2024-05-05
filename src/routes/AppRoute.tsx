@@ -8,6 +8,7 @@ import OrganizationOnboarding from "../pages/onboarding/OrganizationOnboarding.p
 import CompanyDetails from "../pages/onboarding/CompanyDetails.page.tsx";
 import InviteTeam from "../pages/onboarding/InviteTeam.page.tsx";
 import PersonalDetails from "../pages/onboarding/PersonalDetails.page.tsx";
+import CreatePassword from "../pages/createPassword/CreatePassword.page.tsx";
 
 const AppRoute = () => {
   return (
@@ -29,6 +30,7 @@ const AppRoute = () => {
         <Route element={<PublicRoute />}>
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/password" element={<CreatePassword />} />
         </Route>
       </Routes>
     </BrowserRouter>
