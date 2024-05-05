@@ -13,10 +13,6 @@ const StyledLoadingButton = styled(MUILoadingBtn)(({ theme }) => ({
     width: "24px",
     height: "24px",
   },
-  // "& .MuiLoadingButton-loadingIndicator": {
-  //   width: "24px",
-  //   height: "24px",
-  // },
 }));
 
 const LoadingButton: React.FC<ButtonProps> = ({ ...props }) => {

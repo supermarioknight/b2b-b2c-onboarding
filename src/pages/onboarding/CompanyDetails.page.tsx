@@ -40,11 +40,9 @@ const CompanyDetails = () => {
         flexDirection: "column",
       }}
     >
-      {/*Logo*/}
       <Box pb={6} pl={3}>
         <Logo />
       </Box>
-      {/*White Box*/}
       <Box
         sx={{
           flex: 1,
@@ -210,7 +208,6 @@ const CompanyDetails = () => {
           </Button>
         </Box>
       </Box>
-      {/*Footer*/}
       <Typography mt={3} textAlign="center">
         Need Help? <Link>Contact Fieldwork</Link>
       </Typography>

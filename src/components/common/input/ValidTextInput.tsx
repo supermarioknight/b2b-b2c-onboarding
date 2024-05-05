@@ -41,10 +41,8 @@ const ValidTextInput = <T extends FieldValues>({
           onBlur={onBlur}
           onChange={onChange}
           value={value}
-          // error={!!formState.errors[name]}
           error={!!error}
           helperText={error?.message as string}
-          // helperText={formState.errors[name]?.message as string}
         />
       )}
     />

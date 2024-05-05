@@ -114,13 +114,6 @@ const SignupForm: React.FC<SignupFormProps> = ({
           </Grid>
           <Grid item xs={12}>
             <Box display="flex" alignItems="center">
-              {/*<Controller*/}
-              {/*  control={control}*/}
-              {/*  name="agree"*/}
-              {/*  render={({ field: { onChange, value } }) => (*/}
-              {/*    <Checkbox checked onChange={onChange} value={value} />*/}
-              {/*  )}*/}
-              {/*/>*/}
               <Checkbox checked />
               <Typography>
                 I agree to Fieldwork’s <Link>Terms of Service</Link>

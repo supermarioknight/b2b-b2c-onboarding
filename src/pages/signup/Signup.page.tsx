@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import SignupForm from "./form/SignupForm.tsx";
 import InfoList from "../../components/sections/infoList/InfoList.tsx";
 import {

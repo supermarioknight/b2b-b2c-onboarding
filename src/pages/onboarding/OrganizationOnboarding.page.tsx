@@ -25,11 +25,9 @@ const AccountSetup = () => {
         flexDirection: "column",
       }}
     >
-      {/*Logo*/}
       <Box pb={6} pl={3}>
         <Typography variant="h3">Fieldwork</Typography>
       </Box>
-      {/*White Box*/}
       <Box
         sx={{
           flex: 1,
@@ -89,7 +87,6 @@ const AccountSetup = () => {
           </Box>
         </Box>
       </Box>
-      {/*Footer*/}
       <Typography mt={3} textAlign="center">
         Need Help? <Link>Contact Fieldwork</Link>
       </Typography>

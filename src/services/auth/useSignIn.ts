@@ -4,13 +4,10 @@ import { useMutation } from "@tanstack/react-query";
 import { SignInRequest } from "../../schemas/organization-schema.ts";
 
 export const login = (postData: SignInRequest) => {
-  const { email, password, signInFor } = postData;
+  const { email, password } = postData;
   return signIn(email, password).then((_response) => {
-    if (_response?.attributes?.["custom:organizationId"]) {
-      console.log(_response?.attributes?.["custom:organizationId"], 55555555);
-      // make api call to org
-      // TODO: check getOrganizationDetails in useGetOrganizationDetails.ts file, maybe it can be used
-    }
+    console.log(_response);
+    // TODO: check getOrganizationDetails in useGetOrganizationDetails.ts file, maybe it can be used
   });
 };
 

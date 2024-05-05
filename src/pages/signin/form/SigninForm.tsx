@@ -25,7 +25,7 @@ interface SignupFormProps {
 }
 
 const SignInForm: React.FC<SignupFormProps> = ({ onSignIn, isLoading }) => {
-  const { control, handleSubmit, formState, register, watch } =
+  const { control, handleSubmit, formState, watch } =
     useForm<SignInRequest>({
       resolver: zodResolver(SignInSchema),
       defaultValues: {

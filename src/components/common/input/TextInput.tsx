@@ -1,7 +1,6 @@
 import { InputLabel, TextField, Typography } from "@mui/material";
 import { ComponentProps } from "react";
 
-// interface TextInputProps extends ComponentProps<typeof TextField> {}
 export interface TextInputProps extends ComponentProps<typeof TextField> {
   inputLabel?: string;
 }
