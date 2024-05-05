@@ -1,6 +1,5 @@
 import {
   Grid,
-  // Link,
   Paper,
   Typography,
 } from "@mui/material";
@@ -26,19 +25,29 @@ interface SignupFormProps {
 }
 
 const SignInForm: React.FC<SignupFormProps> = ({ onSignIn, isLoading }) => {
-  const { control, handleSubmit, formState, register } = useForm<SignInRequest>(
-    {
+  const { control, handleSubmit, formState, register, watch } =
+    useForm<SignInRequest>({
       resolver: zodResolver(SignInSchema),
       defaultValues: {
         signInFor: "organization",
       },
-    }
-  );
+    });
+
+  const signInFor = watch("signInFor");
 
   console.log(formState.defaultValues, formState.errors, "formState");
 
   return (
-    <Paper sx={{ padding: 6, boxShadow: 0 }}>
+    <Paper
+      sx={{
+        padding: {
+          xs: 2,
+          sm: 3,
+          md: 6,
+        },
+        boxShadow: 0,
+      }}
+    >
       <Typography variant="h2" sx={{ paddingBottom: 3 }}>
         Welcome to Fieldwork!
       </Typography>
@@ -84,9 +93,11 @@ const SignInForm: React.FC<SignupFormProps> = ({ onSignIn, isLoading }) => {
             <LoadingButton type="submit" loading={isLoading} fullWidth>
               Login
             </LoadingButton>
-            <Typography mt={3} textAlign="center">
-              Don't have an account? <Link to={routes.signUp}>Sign up </Link>
-            </Typography>
+            {signInFor === "organization" && (
+              <Typography mt={3} textAlign="center">
+                Don't have an account? <Link to={routes.signUp}>Sign up</Link>
+              </Typography>
+            )}
           </Grid>
         </Grid>
       </form>

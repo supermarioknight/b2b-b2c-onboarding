@@ -35,7 +35,7 @@ const SignInPage = () => {
         alignItems="center"
         spacing={3}
       >
-        <Grid item xs={12} md={7} padding={6}>
+        <Grid item sx={{ display: { xs: "none",  md:"block" } }} md={7} padding={6}>
           <Typography variant="h2" sx={{ paddingBottom: 4 }}>
             Fieldwork is the leading sales tool for your HVAC business.
           </Typography>

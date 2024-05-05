@@ -31,7 +31,11 @@ const SignupForm: React.FC<SignupFormProps> = ({
   return (
     <Paper
       sx={{
-        padding: 6,
+        padding: {
+          xs: 2,
+          sm: 3,
+          md: 6
+        },
         boxShadow:
           "0px 2px 8px -2px rgba(21, 21, 21, 0.08), 0px 12px 16px -4px rgba(21, 21, 21, 0.08)",
       }}

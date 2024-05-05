@@ -1,7 +1,7 @@
 import { ComponentProps, useState } from "react";
 import ValidTextInput from "./ValidTextInput.tsx";
 import { IconButton, InputAdornment } from "@mui/material";
-import { EyeIcon } from "../../../assets/icons/svg/Icons.tsx";
+import { EyeIcon, EyeSlashIcon } from "../../../assets/icons/svg/Icons.tsx";
 import { Control, FieldValues, FormState, Path } from "react-hook-form";
 import TextInput, { TextInputProps } from "./TextInput.tsx";
 
@@ -40,7 +40,7 @@ const PasswordTextInput = <T extends FieldValues>({
               onClick={handleClickShowPassword}
               edge="end"
             >
-              <EyeIcon />
+              {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
             </IconButton>
           </InputAdornment>
         ),
