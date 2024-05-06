@@ -26,7 +26,7 @@ const PasswordTextInput = <T extends FieldValues>({
   return (
     <ValidTextInput
       control={control}
-      name="password"
+      name={"password" as Path<T>}
       formState={formState}
       fullWidth
       inputLabel="Password"

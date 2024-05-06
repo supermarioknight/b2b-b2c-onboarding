@@ -51,16 +51,17 @@ const ValidTextInput = <T extends FieldValues>({
 
 export default ValidTextInput;
 
-function getNestedValue(obj: FieldErrors<FieldValues>, path: string) {
+function getNestedValue(obj: FieldErrors<FieldValues>, path: string): FieldErrors<FieldValues> | undefined {
   const keys = path.split(".");
-  let result = obj;
+  let result: FieldErrors<FieldValues> | undefined = obj;
 
   for (const key of keys) {
     if (result && typeof result === "object" && key in result) {
-      result = result[key];
+      result = result[key] as FieldErrors<FieldValues>;
     } else {
       return undefined;
     }
   }
   return result;
 }
+

@@ -10,9 +10,20 @@ import { useSignup } from "../../services/auth/useSignup.ts";
 import { RegisterOrganizationRequest } from "../../schemas/organization-schema.ts";
 import { routes } from "../../constants/routes.ts";
 
+interface FormError {
+  field: string;
+  message: string;
+}
+
+interface CustomError extends Error {
+  errors?: FormError[];
+}
+
+
 const SignUpPage = () => {
   const navigate = useNavigate();
   const { isPending, mutateAsync, error } = useSignup();
+  const customError = error as CustomError;
   const signup = (data: RegisterOrganizationRequest) => {
     mutateAsync(data)
       .then(() => {
@@ -55,7 +66,7 @@ const SignUpPage = () => {
           <SignupForm
             onSignup={signup}
             isLoading={isPending}
-            error={error?.errors}
+            error={customError.errors}
           />
         </Grid>
       </Grid>

@@ -13,7 +13,7 @@ export const signup = (postData: RegisterOrganizationRequest) => {
 export function useSignup() {
   return useMutation({
     mutationFn: signup,
-    onSuccess: (_response) => {
+    onSuccess: () => {
       console.log("Organization has successfully been registered.");
     },
   });

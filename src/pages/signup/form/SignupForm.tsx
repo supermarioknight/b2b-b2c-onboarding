@@ -28,6 +28,12 @@ const SignupForm: React.FC<SignupFormProps> = ({
     useForm<RegisterOrganizationRequest>({
       resolver: zodResolver(RegisterOrganizationSchema),
     });
+
+  const formattedError = error?.map((err) => ({
+    field: err.field as keyof RegisterOrganizationRequest,
+    message: err.message,
+  }));
+
   return (
     <Paper
       sx={{
@@ -59,7 +65,7 @@ const SignupForm: React.FC<SignupFormProps> = ({
               fullWidth
               inputLabel="Company name"
               variant="outlined"
-              apiError={error}
+              apiError={formattedError}
             />
           </Grid>
 
@@ -71,7 +77,7 @@ const SignupForm: React.FC<SignupFormProps> = ({
                 formState={formState}
                 fullWidth
                 inputLabel="First name"
-                apiError={error}
+                apiError={formattedError}
               />
             </Grid>
             <Grid item xs={6}>
@@ -81,7 +87,7 @@ const SignupForm: React.FC<SignupFormProps> = ({
                 formState={formState}
                 fullWidth
                 inputLabel="Last name"
-                apiError={error}
+                apiError={formattedError}
               />
             </Grid>
           </Grid>
@@ -93,7 +99,7 @@ const SignupForm: React.FC<SignupFormProps> = ({
               fullWidth
               inputLabel="Email address"
               type="email"
-              apiError={error}
+              apiError={formattedError}
             />
           </Grid>
           <Grid item xs={12}>
@@ -109,14 +115,14 @@ const SignupForm: React.FC<SignupFormProps> = ({
             <PasswordTextInput
               formState={formState}
               control={control}
-              apiError={error}
+              apiError={formattedError}
             />
           </Grid>
           <Grid item xs={12}>
             <Box display="flex" alignItems="center">
               <Checkbox checked />
               <Typography>
-                I agree to Fieldwork’s <Link>Terms of Service</Link>
+                I agree to Fieldwork’s <Link to={"#"}>Terms of Service</Link>
               </Typography>
             </Box>
           </Grid>

@@ -27,7 +27,9 @@ const CompanyDetails = () => {
       resolver: zodResolver(BaseOrganizationSchema),
     });
 
-  const submitCompanyDetails = (data) => {};
+  const submitCompanyDetails = (data: unknown) => {
+    console.log(data);
+  };
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
